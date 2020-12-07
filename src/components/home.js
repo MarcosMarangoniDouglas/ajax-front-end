@@ -8,7 +8,8 @@ function Home() {
     characters: [],
     name: '',
     height: '',
-    mass: ''
+    mass: '',
+    gender: ''
   });
 
   useEffect(() => {
@@ -39,6 +40,7 @@ function Home() {
           <th>{character.name}</th>
           <th>{character.height !== 'unknown' ? `${character.height} cm` : `Height not provided`}</th>
           <th>{character.mass !== 'unknown' ? `${character.mass} kg` : `Mass not provided`}</th>
+          <th>{character.gender !== 'unknown' ? `${character.gender}` : `Gender not provided`}</th>
         </tr>))
     );
   }
@@ -52,6 +54,7 @@ function Home() {
             <th>Name</th>
             <th>Height</th>
             <th>Mass</th>
+            <th>Gender</th>
           </tr>
         </thead>
         <tbody>
@@ -59,6 +62,7 @@ function Home() {
             <th><Form.Control value={state.name} onChange={(v) => filter(v, 'name')}/></th>
             <th><Form.Control value={state.height} onChange={(v) => filter(v, 'height')}/></th>
             <th><Form.Control value={state.mass} onChange={(v) => filter(v, 'mass')}/></th>
+            <th><Form.Control value={state.gender} onChange={(v) => filter(v, 'gender')}/></th>
           </tr>
           { renderCharacters() }
         </tbody>
