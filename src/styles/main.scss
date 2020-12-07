@@ -1,0 +1,67 @@
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+
+html {
+  height: 100vh;
+}
+
+body {
+  background-color: var(--light);
+}
+
+h2 {
+  color: #FFE81F;
+}
+
+.header {
+  background-color: black;
+  height: 25%;
+
+  img {
+    height: 150px;
+    margin-left: 50px;
+  }
+
+  .navigation-col {
+    margin: auto 0;
+  }
+
+  .navigation {
+    margin: 0 15%;
+    justify-content: flex-end;
+    a {
+      color: #FFE81F;
+    }
+  }
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.dropdown-btn {
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(255,255,255,0.2);
+    z-index: 1;
+  
+    .a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      clear: both;
+    }
+  }
+
+  &:hover {
+    .dropdown-content {
+      display: block;
+    }
+  }
+}
