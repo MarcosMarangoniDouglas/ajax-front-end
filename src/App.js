@@ -9,6 +9,8 @@ import {
 
 import Home from './components/home';
 import Header from './components/header';
+import AddNew from './components/add';
+import Edit_Delete from './components/edit_delete';
 import './styles/main.scss';
 import background from './images/background.jpg';
 
@@ -17,6 +19,8 @@ function App() {
     <Router>
       <Switch>
         <PublicRoute exact path="/" component={Home} />
+        <PublicRoute exact path="/new" component={AddNew} />
+        <PublicRoute exact path="/actions" component={Edit_Delete} />
       </Switch>
     </Router>
   );

@@ -47,7 +47,7 @@ function Home() {
 
   return (
     <Container>
-      <Row className="justify-content-center"><h2>Sample List of Star Wars characters</h2></Row>
+      <Row className="justify-content-center"><h2>Sample List of Star Wars Characters</h2></Row>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
