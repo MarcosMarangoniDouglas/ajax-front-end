@@ -3,6 +3,7 @@ import { Table, Container, Button, ButtonGroup, Modal, Row } from 'react-bootstr
 import { Redirect } from 'react-router-dom';
 import qs from 'qs';
 import Characters from '../api/characters';
+import Pagination from './pagination';
 
 class Edit_Delete extends Component {
   constructor(props) {
@@ -11,18 +12,19 @@ class Edit_Delete extends Component {
       characters: [],
       showModal: false,
       redirectToEdit: false,
-      character: {}
+      character: {},
+      total: 0
     };
   }
 
   async componentDidMount() {
-    await this.refreshCharacters();
+    await this.refreshCharacters(0, 10);
   }
 
-  refreshCharacters = async () => {
+  refreshCharacters = async (page, size) => {
     try {
-      let response = await Characters.index();
-      this.setState({ characters: response.data });
+      let response = await Characters.index(page,size);
+      this.setState({ characters: response.data.documents, total: response.data.total });
     } catch (error) {
       console.log(error.message);
     }
@@ -99,7 +101,9 @@ class Edit_Delete extends Component {
             {this.renderCharacters()}
           </tbody>
         </Table>
-
+        <Row>
+          <Pagination total={this.state.total} onClick={this.refreshCharacters} />
+        </Row>
       </Container>
     );
   }
