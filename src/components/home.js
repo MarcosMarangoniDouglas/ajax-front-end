@@ -1,6 +1,7 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, Container, Row, Form } from 'react-bootstrap';
 import Characters from '../api/characters';
+import Pagination from './pagination';
 
 function Home() {
   const [state, setState] = useState({
@@ -9,17 +10,18 @@ function Home() {
     name: '',
     height: '',
     mass: '',
-    gender: ''
+    gender: '',
+    total: 0
   });
 
   useEffect(() => {
-    fetchData();
+    fetchData(0, 10);
   }, [])
 
-  const fetchData = async () => {
+  const fetchData = async (page, size) => {
     try {
-      let response = await Characters.index();
-      setState({ ...state, filteredCharacters: response.data, characters: response.data });
+      let response = await Characters.index(page, size);
+      setState({ ...state, filteredCharacters: response.data.documents, characters: response.data.documents, total: response.data.total });
     } catch (error) {
       console.log(error.message);
     }
@@ -38,9 +40,9 @@ function Home() {
       state.filteredCharacters.map((character, index) => 
         (<tr key={`character-${index}`}>
           <th>{character.name}</th>
-          <th>{character.height !== 'unknown' ? `${character.height} cm` : `Height not provided`}</th>
-          <th>{character.mass !== 'unknown' ? `${character.mass} kg` : `Mass not provided`}</th>
-          <th>{character.gender !== 'unknown' ? `${character.gender}` : `Gender not provided`}</th>
+          <th>{character.height !== 'unknown' ? `${character.height} cm` : character.height}</th>
+          <th>{character.mass !== 'unknown' ? `${character.mass} kg` : character.mass}</th>
+          <th>{character.gender !== 'unknown' ? `${character.gender}` : character.gender}</th>
         </tr>))
     );
   }
@@ -67,6 +69,9 @@ function Home() {
           { renderCharacters() }
         </tbody>
       </Table>
+      <Row>
+        <Pagination total={state.total} onClick={fetchData}/>
+      </Row>
     </Container>
   );
 }

@@ -5,12 +5,12 @@ html {
   height: 100vh;
 }
 
-body {
-  background-color: var(--light);
+h2, h4, h6 {
+  color: #FFE81F;
 }
 
-h2 {
-  color: #FFE81F;
+h6 {
+  white-space: nowrap;
 }
 
 .header {
@@ -40,7 +40,7 @@ h2 {
 }
 
 .dropdown-btn {
-  color: var(--primary);
+  color: #FFE81F;
   padding: 0.5rem 1rem;
   .dropdown-content {
     display: none;

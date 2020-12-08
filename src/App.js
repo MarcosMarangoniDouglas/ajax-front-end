@@ -12,7 +12,6 @@ import Header from './components/header';
 import AddNew from './components/add';
 import Edit_Delete from './components/edit_delete';
 import './styles/main.scss';
-import background from './images/background.jpg';
 
 function App() {
   return (
@@ -40,7 +39,7 @@ const PublicComponentsRender = (props) => {
       <div>
         <Header />
       </div>
-      <div className="h-75" style={{ backgroundImage: `url(${background})`, padding: '15px' }}>
+      <div className="h-75" style={{ backgroundImage: `url(/background.jpg)`, padding: '15px' }}>
         <props.component params={useParams()} location={props.location} />
       </div>
     </React.Fragment>

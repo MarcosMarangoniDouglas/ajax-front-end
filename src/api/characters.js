@@ -1,7 +1,12 @@
 import axios from './axios';
 
-function index() {
-  return axios.get('characters');
+function index(page, size) {
+  return axios.get('characters', {
+    params: {
+      page,
+      size
+    }
+  });
 }
 
 function show(id) {

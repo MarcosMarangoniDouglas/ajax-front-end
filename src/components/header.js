@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Nav } from 'react-bootstrap';
 
-import logo from '../images/star_wars_logo.svg';
-
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +17,7 @@ class Header extends Component {
         <Row className="header">
           <Col>
             <Row>
-              <img src={logo} />
+              <img src="/star_wars_logo.svg" />
             </Row>
           </Col>
           <Col className="navigation-col">
@@ -28,7 +26,7 @@ class Header extends Component {
                 <Nav.Link href="/" className="text-bold">Home</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Item className="dropdown-btn text-bold" style={{ color: '#FFE81F' }}>Admin
+                <Nav.Item className="dropdown-btn text-bold">Admin
                 <Nav.Item className="dropdown-content">
                   <Nav.Link href="/new">Add New</Nav.Link>
                   <Nav.Link href="/actions">Edit / Delete</Nav.Link>
